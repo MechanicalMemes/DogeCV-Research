@@ -33,9 +33,12 @@ with open('input/labels/ftc_test.csv') as csv_file:
             print(f'Column names are {", ".join(row)}')
             line_count += 1
         else:
-            #print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
-            to_process.append(('test', row[0], row[3], (row[4], row[5],row[6],row[7])))
-            line_count += 1
+            to_process.append(('test', row[0], row[3], (int(row[4]), int(row[5]),int(row[6]),int(row[7]))))
+
+            if line_count % 5 is 0:
+                to_process.append(('test', row[0], "none", (10, 10,50,50)))
+                to_process.append(('test', row[0], "none", (80, 10,140,50)))
+                to_process.append(('test', row[0], "none", (100, 10,150, 60)))
     print(f'Processed {line_count} lines.')
 
 save_index = 0;
